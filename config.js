@@ -19,11 +19,9 @@ module.exports = {
     REDIS_URL: '//127.0.0.1:6379',
   },
 
-  development: {
-    LOG_LEVEL: 'debug',
-  },
-
   staging: {
+    API_ADDRESS: 'https://api-staging.iconbuild.com',
+    LOG_LEVEL: 'debug',
   },
 
   review: {
@@ -31,7 +29,7 @@ module.exports = {
   },
 
   production: {
-    CORS_ORIGIN: 'https://api.iconbuild.com',
+    API_ADDRESS: 'https://api.iconbuild.com',
   },
 
   get: function(key) {
