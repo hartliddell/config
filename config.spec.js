@@ -7,19 +7,22 @@ describe('config', () => {
     process.env.NODE_ENV = 'testing';
   });
 
-  it('get', () => {
-    expect(config.get('SENTRY_DSN')).to.equals('');
+  describe('get', () => {
+    it('should return the default value', () => {
+      const value = config.get('API_ADDRESS');
+      expect(value).to.equals('https://localhost');
+    });
+
+    it('should support env overrides', () => {
+      process.env.SENTRY_DSN = 'hello world';
+      expect(config.get('SENTRY_DSN')).to.equals('hello world');
+    });
   });
 
-  it('environment variable override', () => {
-    process.env.SENTRY_DSN = 'hello world';
-    expect(config.get('SENTRY_DSN')).to.equals('hello world');
-  });
 
   it('can use staging env', () => {
-    expect(config.get('TOTP_WINDOW')).to.equals(1); // default
-
-    process.env.ENVIRONMENT = 'staging';
-    expect(config.get('TOTP_WINDOW')).to.equals(2); // staging
+    process.env.NODE_ENV = 'staging';
+    const value = config.get('API_ADDRESS');
+    expect(value).to.equals('https://api-staging.iconbuild.com');
   });
 });
