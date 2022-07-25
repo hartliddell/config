@@ -20,7 +20,7 @@ module.exports = {
   },
 
   staging: {
-    API_ADDRESS: 'https://api-staging.iconbuild.com',
+    API_ADDRESS: 'https://api-staging.website.com',
     LOG_LEVEL: 'debug',
   },
 
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   production: {
-    API_ADDRESS: 'https://api.iconbuild.com',
+    API_ADDRESS: 'https://api.website.com',
   },
 
   get: function(key) {
